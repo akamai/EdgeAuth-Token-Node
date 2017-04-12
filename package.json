@@ -1,0 +1,27 @@
+{
+  "name": "akamai-authtoken",
+  "version": "0.1.0",
+  "description": "Akamai AuthToken Library for Node",
+  "main": "./lib/akamai/authtoken/authtoken",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AstinCHOI/Akamai-AuthToken-Node.git"
+  },
+  "keywords": [
+    "authtoken",
+    "akamai",
+    "akamai-authtoken"
+  ],
+  "author": "Joon Han",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/AstinCHOI/Akamai-AuthToken-Node/issues"
+  },
+  "homepage": "https://github.com/AstinCHOI/Akamai-AuthToken-Node#readme",
+  "dependencies": {
+    "log": "^1.4.0"
+  }
+}
