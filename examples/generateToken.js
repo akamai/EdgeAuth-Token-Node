@@ -8,9 +8,12 @@ var atk = new AuthToken({
     key: "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5"
     ,startTime: new Date()
     ,windowSeconds: 2*60*60
-    //,accessList: ["/test/*","/sample/*"]
+    ,accessList: ["/test/*","/sample/*"]
 });
 atk.generateToken();
+
+
+
 console.log("=== END ===");
 
 
