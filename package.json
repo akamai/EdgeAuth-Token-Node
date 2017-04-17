@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/AstinCHOI/Akamai-AuthToken-Node#readme",
   "dependencies": {
+    "json-util": "^2.2.0",
     "log": "^1.4.0"
   }
 }

@@ -9,7 +9,11 @@ var atk = new AuthToken({
     ,startTime: new Date()
     ,windowSeconds: 2*60*60
     ,accessList: ["/test/*","/sample/*"]
+    ,ipAddress: '192.168.0.1 ipv6 입니다 : af:1a:3d:99:04:0f'
 });
+atk.generateToken();
+
+atk.setOptions({key:'abc', accessList:['/*']});
 atk.generateToken();
 
 
