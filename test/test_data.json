@@ -1,0 +1,264 @@
+{
+  "local": {
+    "not_throw1": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "windowSeconds": 604800,
+        "accessList": [
+          "/path1",
+          "/path2/*"
+        ]
+      }
+    },
+    "not_throw2": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": "now",
+        "windowSeconds": 100,
+        "accessList": [
+          "/*"
+        ]
+      }
+    },
+    "not_throw3": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405999,
+        "accessList": [
+          "/*"
+        ]
+      }
+    },
+    "not_throw4": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405999,
+        "escapeEarly": true,
+        "escapeEarlyUpper": true,
+        "accessList": [
+          "/*"
+        ]
+      }
+    },
+    "throw1": {
+      "options": {
+        "startTime": 1492404013,
+        "endTime": 1492405999,
+        "escapeEarly": true,
+        "escapeEarlyUpper": true,
+        "accessList": [
+          "/*"
+        ]
+      }
+    },
+    "throw2": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492404012,
+        "escapeEarly": true,
+        "escapeEarlyUpper": true,
+        "accessList": [
+          "/*"
+        ]
+      }
+    },
+    "throw3": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492404999,
+        "escapeEarly": true,
+        "escapeEarlyUpper": true,
+        "accessList": "abc"
+      }
+    },
+    "throw4": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492404999,
+        "escapeEarly": true,
+        "escapeEarlyUpper": true,
+        "accessList": [
+          "/*"
+        ],
+        "url": "test.png"
+      }
+    },
+    "atk1": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "accessList": [
+          "/*"
+        ]
+      },
+      "result": {
+        "token": "_token_=st=1492404013~exp=1492404013~acl=/*~hmac=a77d3cd18e2a08adbc45f844203bb88a9d5057a4e465551b6861f98fb6fecbec"
+      }
+    },
+    "atk2": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "windowSeconds": 604800,
+        "accessList": [
+          "/*"
+        ]
+      },
+      "result": {
+        "token": "_token_=st=1492404013~exp=1493008813~acl=/*~hmac=57cef6aa3c30939b3f599ee7b1bda3bd63c58937ff713d605d5139e449e09a3c"
+      }
+    },
+    "atk3": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "windowSeconds": 604800,
+        "accessList": [
+          "/path1",
+          "/path2"
+        ]
+      },
+      "result": {
+        "token": "_token_=st=1492404013~exp=1493008813~acl=/path1!/path2~hmac=17f163a7cb8d38e2bb97849375674758cc47a5937764c4b2e82678f23cee6380"
+      }
+    },
+    "atk4": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "accessList": [
+          "/path1",
+          "/path2"
+        ]
+      },
+      "result": {
+        "token": "_token_=st=1492404013~exp=1492405000~acl=/path1!/path2~hmac=918aa0dbc9a471967c4996b66e9c7e32b75f9784e4cec520fb45c4c1a56f8253"
+      }
+    },
+    "atk5": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "url": "/target/url"
+      },
+      "result": {
+        "token": "_token_=st=1492404013~exp=1492405000~hmac=637d42fd0739315be4129508f9d3cbeba15c7ab561d767844f1fd468c4fb0694"
+      }
+    },
+    "atk6": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "url": "/target/url",
+        "sessionId": "MY_SESSION_ID_E1905##"
+      },
+      "result": {
+        "token": "_token_=st=1492404013~exp=1492405000~id=MY_SESSION_ID_E1905##~hmac=e0db8fcd7b5f59adfe23dd3417c524ff31a6b6d0dd9a22d56bab675fb62608b7"
+      }
+    },
+    "atk7": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "url": "/target/url",
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1"
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~id=MY_SESSION_ID_E1905##~hmac=03ff877afaf13c6dd58ee320d6f61da0772b9149072558f9dc5439f482ddcedd"
+      }
+    },
+    "atk8": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "url": "/target/url",
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1",
+        "payload": "goodjoon"
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~id=MY_SESSION_ID_E1905##~data=goodjoon~hmac=8dcd3d6b2c56ca712b04dfa31373d5a7d71bae2b8ed9c67fe7c9ad459c0ef7dc"
+      }
+    },
+    "atk9": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "url": "/target/url",
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1",
+        "payload": "goodjoon",
+        "salt": "passwd"
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~id=MY_SESSION_ID_E1905##~data=goodjoon~hmac=4852b47e438c4474c14971d54ac81ce677a58b8870cc6ad1e2f9ca0ecac991c3"
+      }
+    },
+    "atk10": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "url": "/target/url",
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1",
+        "payload": "goodjoon",
+        "salt": "passwd",
+        "delimiter": "@"
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1@st=1492404013@exp=1492405000@id=MY_SESSION_ID_E1905##@data=goodjoon@hmac=b6a0ade838ccdff6d521bec1f23c8fbedee0f05238ea1bdf087e34d5f4826fd5"
+      }
+    },
+    "atk11": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "url": "/target/url",
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1",
+        "payload": "goodjoon",
+        "salt": "passwd",
+        "delimiter": "~",
+        "escapeEarly": true
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~id=MY_SESSION_ID_E1905%23%23~data=goodjoon~hmac=77390902cddba1ef5a55ce7c12ed33b44045273c7e9cd92d365c5bd29eb016e4"
+      }
+    },
+    "atk12": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "accessList": ["/path1/@#$%","/path2/^$^$%^"],
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1",
+        "payload": "goodjoon",
+        "salt": "passwd",
+        "delimiter": "~",
+        "escapeEarly": true,
+        "escapeEarlyUpper": true
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~acl=%2Fpath1%2F%40%23%24%25%21%2Fpath2%2F%5E%24%5E%24%25%5E~id=MY_SESSION_ID_E1905%23%23~data=goodjoon~hmac=c18f46793a1a535a3dcf5309107359a43eddb3d5471f76e6f290ba6fd3cdeecf"
+      }
+    }
+  },
+  "remote": {
+  }
+}

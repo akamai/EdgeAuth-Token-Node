@@ -3,10 +3,10 @@
  */
 
 var AuthToken = require('../lib/akamai/authtoken/authtoken');
-
+//,key: "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5"
 var atk = new AuthToken({
     tokenName: "token"
-    ,key: "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5"
+
     ,startTime: 1492404013
     ,windowSeconds: 604800
     ,accessList: ["/*"]

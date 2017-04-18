@@ -4,7 +4,8 @@
   "description": "Akamai AuthToken Library for Node",
   "main": "./lib/akamai/authtoken/authtoken",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test_oldy": "node_modules/.bin/mocha $(find ./test -name '*.js' ) --recursive -w"
+    ,"test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,10 @@
   "dependencies": {
     "json-util": "^2.2.0",
     "log": "^1.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "request": "^2.81.0"
   }
 }
