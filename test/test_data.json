@@ -257,6 +257,44 @@
       "result": {
         "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~acl=%2Fpath1%2F%40%23%24%25%21%2Fpath2%2F%5E%24%5E%24%25%5E~id=MY_SESSION_ID_E1905%23%23~data=goodjoon~hmac=c18f46793a1a535a3dcf5309107359a43eddb3d5471f76e6f290ba6fd3cdeecf"
       }
+    },
+    "atk13": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "accessList": ["/path1/@#$%","/path2/^$^$%^"],
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1",
+        "payload": "goodjoon",
+        "salt": "passwd",
+        "delimiter": "~",
+        "escapeEarly": true,
+        "escapeEarlyUpper": true,
+        "algorithm":"md5"
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~acl=%2Fpath1%2F%40%23%24%25%21%2Fpath2%2F%5E%24%5E%24%25%5E~id=MY_SESSION_ID_E1905%23%23~data=goodjoon~hmac=ead636fa310b3da4731b77629f810db2"
+      }
+    },
+    "atk14": {
+      "options": {
+        "key": "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5",
+        "startTime": 1492404013,
+        "endTime": 1492405000,
+        "accessList": ["/path1/@#$%","/path2/^$^$%^"],
+        "sessionId": "MY_SESSION_ID_E1905##",
+        "ipAddress": "192.168.0.1",
+        "payload": "goodjoon",
+        "salt": "passwd",
+        "delimiter": "~",
+        "escapeEarly": true,
+        "escapeEarlyUpper": true,
+        "algorithm":"sha1"
+      },
+      "result": {
+        "token": "_token_=ip=192.168.0.1~st=1492404013~exp=1492405000~acl=%2Fpath1%2F%40%23%24%25%21%2Fpath2%2F%5E%24%5E%24%25%5E~id=MY_SESSION_ID_E1905%23%23~data=goodjoon~hmac=bfaf6944765c3e8122cbdc54e17ae2c0d9467e36"
+      }
     }
   },
   "remote": {
