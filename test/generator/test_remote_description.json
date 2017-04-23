@@ -1,0 +1,37 @@
+{
+    "rtc0": {
+      "_edge": {
+        "url": "(string) url of request resource",
+        "escape": "(bool) escape token inputs on/off",
+        "queryString": "(string) query string to be appended to url",
+        "tokenLocation": "(string) query | cookie | header , token string location of HTTP request",
+        "tokenName": "(string) edge's token name",
+        "ignoreQueryString": "(bool) ignore query string from edge auth token validation",
+        "algorithm": "(string) SHA256 | SHA1 | MD5 , Hmac algorithm",
+        "transitionKey": "(string) transition(alternate) key along with key",
+        "salt": "(string) additional salt key used with key",
+        "method": "(string) HTTP MTHODS",
+        "key": "(string) edge's token key. this should be same with generator options' key",
+      },
+      "a": {
+        "accessList": "(Array of string(s)) valid access list. ex) ['/p1/*','/p2/*']. [one of url or accessList required]",
+        "delimiter": "(string) delimiter character to delimit each token properties [default: '~']",
+        "endTime": "(string/Number/Date) 'now' | epoch seconds | Date object, valid start time",
+        "escapeEarly": "(bool) escape string in token [default: false]",
+        "escapeEarlyUpper": "(bool) escape string in token and tranform escaped hex string to upper case [default: false]",
+        "ipAddress": "(String) ip address to be allowed [optional]",
+        "key": "(string) Hmac key shared with edge [required]",
+        "payload": "(string) additional data [optional]",
+        "salt": "(string) salt key combined with 'key' [optional]",
+        "sessionId": "(String) additional data [optional]",
+        "startTime": "(string/Number/Date) 'now' | epoch seconds | Date object, valid start time, [default: 'now']",
+        "tokenName": "(string) token name [default: __token__]",
+        "url": "(string) valid url [one of url or accessList required]",
+        "windowSeconds": "(Number) valid time window from startTime in seconds [startTime override windowSeconds]",
+        "expect": {
+          "code": "(array) expected response code from edge server"
+        }
+      }
+    }
+  }
+}

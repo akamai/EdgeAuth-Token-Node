@@ -3,13 +3,13 @@
  */
 
 var AuthToken = require('../lib/akamai/authtoken/authtoken');
-//,key: "7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5"
+
 var atk = new AuthToken({
     tokenName: "token"
-
-    ,startTime: 1492404013
+    ,startTime: "now"
     ,windowSeconds: 604800
     ,accessList: ["/*"]
+    ,key:"7a5c2be9f42a1f32cd889d1cf775f05d0cd162bd2871d00fe705ab28c9bba5a5"
 });
 
 console.log("GENERATED TOKEN: " + atk.generateToken());

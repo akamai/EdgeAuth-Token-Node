@@ -1,0 +1,1239 @@
+{
+	"salt_01": {
+		"_edge": {
+			"url": "http://auth-token.akamaized.net/q_escape_ignore",
+			"escape": true,
+			"tokenLocation": "Cookie",
+			"tokenName": "__token__",
+			"ignoreQueryString": true,
+			"algorithm": "SHA256",
+			"method": "GET",
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"triggeredAt": "immediate"
+		},
+		"a": {
+			"tcName": "salt_01.a",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"b": {
+			"tcName": "salt_01.b",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"c": {
+			"tcName": "salt_01.c",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"d": {
+			"tcName": "salt_01.d",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"e": {
+			"tcName": "salt_01.e",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"f": {
+			"tcName": "salt_01.f",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"windowSeconds": 10,
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"g": {
+			"tcName": "salt_01.g",
+			"accessList": [
+				"/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"h": {
+			"tcName": "salt_01.h",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"i": {
+			"tcName": "salt_01.i",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"j": {
+			"tcName": "salt_01.j",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"k": {
+			"tcName": "salt_01.k",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"l": {
+			"tcName": "salt_01.l",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		}
+	},
+	"salt_02": {
+		"_edge": {
+			"url": "http://auth-token.akamaized.net/q_escape_ignore/test.png",
+			"escape": true,
+			"tokenLocation": "Cookie",
+			"tokenName": "__token__",
+			"ignoreQueryString": true,
+			"algorithm": "SHA256",
+			"method": "GET",
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"triggeredAt": "immediate"
+		},
+		"a": {
+			"tcName": "salt_02.a",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"b": {
+			"tcName": "salt_02.b",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"c": {
+			"tcName": "salt_02.c",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"d": {
+			"tcName": "salt_02.d",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"e": {
+			"tcName": "salt_02.e",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"f": {
+			"tcName": "salt_02.f",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"windowSeconds": 10,
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"g": {
+			"tcName": "salt_02.g",
+			"accessList": [
+				"/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"h": {
+			"tcName": "salt_02.h",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"i": {
+			"tcName": "salt_02.i",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"j": {
+			"tcName": "salt_02.j",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"k": {
+			"tcName": "salt_02.k",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"l": {
+			"tcName": "salt_02.l",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"m": {
+			"tcName": "salt_02.m",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"n": {
+			"tcName": "salt_02.n",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"o": {
+			"tcName": "salt_02.o",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"p": {
+			"tcName": "salt_02.p",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"q": {
+			"tcName": "salt_02.q",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"r": {
+			"tcName": "salt_02.r",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"windowSeconds": 10,
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"s": {
+			"tcName": "salt_02.s",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"t": {
+			"tcName": "salt_02.t",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"u": {
+			"tcName": "salt_02.u",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"v": {
+			"tcName": "salt_02.v",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"w": {
+			"tcName": "salt_02.w",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"x": {
+			"tcName": "salt_02.x",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		}
+	},
+	"salt_03": {
+		"_edge": {
+			"url": "http://auth-token.akamaized.net/q_escape_ignore/test.png",
+			"escape": true,
+			"queryString": "foo=bar&hello=WoRLD한글임_##()[]",
+			"tokenLocation": "Cookie",
+			"tokenName": "__token__",
+			"ignoreQueryString": true,
+			"algorithm": "SHA256",
+			"method": "GET",
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"triggeredAt": "immediate"
+		},
+		"a": {
+			"tcName": "salt_03.a",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"b": {
+			"tcName": "salt_03.b",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"c": {
+			"tcName": "salt_03.c",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"d": {
+			"tcName": "salt_03.d",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"e": {
+			"tcName": "salt_03.e",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"f": {
+			"tcName": "salt_03.f",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"windowSeconds": 10,
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"g": {
+			"tcName": "salt_03.g",
+			"accessList": [
+				"/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"h": {
+			"tcName": "salt_03.h",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"i": {
+			"tcName": "salt_03.i",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"j": {
+			"tcName": "salt_03.j",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"k": {
+			"tcName": "salt_03.k",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"l": {
+			"tcName": "salt_03.l",
+			"accessList": [
+				"/q_escape_ignore",
+				"/q_escape_ignore/*"
+			],
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"m": {
+			"tcName": "salt_03.m",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"n": {
+			"tcName": "salt_03.n",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"o": {
+			"tcName": "salt_03.o",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"p": {
+			"tcName": "salt_03.p",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"q": {
+			"tcName": "salt_03.q",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"r": {
+			"tcName": "salt_03.r",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"windowSeconds": 10,
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"s": {
+			"tcName": "salt_03.s",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"t": {
+			"tcName": "salt_03.t",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"u": {
+			"tcName": "salt_03.u",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"v": {
+			"tcName": "salt_03.v",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"w": {
+			"tcName": "salt_03.w",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"x": {
+			"tcName": "salt_03.x",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png?foo=bar&hello=WoRLD한글임_##()[]",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"a2": {
+			"tcName": "salt_03.a2",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a3": {
+			"tcName": "salt_03.a3",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a4": {
+			"tcName": "salt_03.a4",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a5": {
+			"tcName": "salt_03.a5",
+			"endTime": 1609286400,
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a6": {
+			"tcName": "salt_03.a6",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a7": {
+			"tcName": "salt_03.a7",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"windowSeconds": 10,
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a8": {
+			"tcName": "salt_03.a8",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a9": {
+			"tcName": "salt_03.a9",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a10": {
+			"tcName": "salt_03.a10",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					200,
+					404
+				]
+			}
+		},
+		"a11": {
+			"tcName": "salt_03.a11",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"a12": {
+			"tcName": "salt_03.a12",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		},
+		"a13": {
+			"tcName": "salt_03.a13",
+			"endTime": "now+10",
+			"escapeEarly": true,
+			"escapeEarlyUpper": true,
+			"key": "b64a1a9b2f61e7441603806a581dcf63cd1704992455cb2308ff7fa94929dee0",
+			"sessionId": "SOME_SESSIONID_DATA_!@#$",
+			"startTime": "now",
+			"tokenName": "__token__",
+			"url": "/q_escape_ignore/test.png",
+			"expect": {
+				"code": [
+					403
+				]
+			}
+		}
+	}
+}

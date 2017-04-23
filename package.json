@@ -4,8 +4,8 @@
   "description": "Akamai AuthToken Library for Node",
   "main": "./lib/akamai/authtoken/authtoken",
   "scripts": {
-    "test_oldy": "node_modules/.bin/mocha $(find ./test -name '*.js' ) --recursive -w"
-    ,"test": "./node_modules/.bin/mocha --reporter spec"
+    "generate": "node ./test/generator/generateTestRemote.js",
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,11 @@
   },
   "homepage": "https://github.com/AstinCHOI/Akamai-AuthToken-Node#readme",
   "dependencies": {
+    "async": "^2.3.0",
+    "excel-as-json": "^2.0.0",
     "json-util": "^2.2.0",
-    "log": "^1.4.0"
+    "log": "^1.4.0",
+    "mocha-logger": "^1.0.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",

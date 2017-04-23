@@ -7,7 +7,10 @@ var expect = require('chai').expect
     ,request = require('request')
     ,fs = require('fs');
 
-var ltd = JSON.parse(fs.readFileSync('./test/test_data.json'));
+var ltd;
+
+ltd = JSON.parse(fs.readFileSync('./test/test_local.json'));
+
 ltd = ltd['local'];
 
 describe("AuthToken Local Hmac Validation Test", function() {
