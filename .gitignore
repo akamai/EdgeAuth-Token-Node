@@ -169,3 +169,9 @@ fabric.properties
 /.idea/
 /temp/
 /TestMetrics.xlsx
+/test/test_remote_cookie.json
+/test/test_remote_salt.json
+/test/test_remote_header.json
+/test/test_remote_query.json
+/test/test_local_old.json
+/test/generator/~$TestMetrics_src.xlsx

@@ -32,7 +32,7 @@ var templateRtc = {
             "escapeEarlyUpper": "${earlyUpper}",
             "ipAddress": "${ipAddress}",
             "key": "${key}",
-            "payload": "${salt}",
+            "payload": "${payload}",
             "salt": "${salt}",
             "sessionId": "${sessionId}",
             "startTime": "${startTime}",
@@ -40,6 +40,7 @@ var templateRtc = {
             "url": "${url}",
             "windowSeconds": "${windowSeconds}",
             "verbosity": "${verbosity}",
+            "algorithm": "${edgeAlgorithm}",
             "expect": {
                 "code": "${expected}"
             }

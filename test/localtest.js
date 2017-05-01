@@ -98,18 +98,6 @@ describe("AuthToken Local Hmac Validation Test", function() {
             var atk = new AuthToken(ltd.atk11.options);
             expect(atk.generateToken()).to.equal(ltd.atk11.result.token);
         });
-        it("escapeEarlyUpper", function() {
-            var atk = new AuthToken(ltd.atk12.options);
-            expect(atk.generateToken()).to.equal(ltd.atk12.result.token);
-        });
-        it("Hmac MD5", function() {
-            var atk = new AuthToken(ltd.atk13.options);
-            expect(atk.generateToken()).to.equal(ltd.atk13.result.token);
-        });
-        it("Hmac SHA1", function() {
-            var atk = new AuthToken(ltd.atk14.options);
-            expect(atk.generateToken()).to.equal(ltd.atk14.result.token);
-        });
     });
 
     describe("Hmac Algorithm Test", function() {

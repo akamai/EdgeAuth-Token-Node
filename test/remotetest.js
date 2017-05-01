@@ -1,14 +1,14 @@
 /**
  * Created by shan on 4/21/17.
  */
-var expect = require('chai').expect
-    , AuthToken = require('../lib/akamai/authtoken/authtoken.js')
-    , request = require('request')
-    , fs = require('fs')
-    , mlogger = require('mocha-logger')
-    , Log = require('log')
-    , logger = new Log('info')
-    , async = require('async');
+var expect = require('chai').expect,
+    AuthToken = require('../lib/akamai/authtoken/authtoken.js'),
+    request = require('request'),
+    fs = require('fs'),
+    mlogger = require('mocha-logger'),
+    Log = require('log'),
+    logger = new Log('info'),
+    async = require('async');
 
 var rtd = {};
 
@@ -46,18 +46,26 @@ function makeRequest(done, rtcCaseName, optionsName) {
     expect(rtcCase['_edge']['key']).to.exist;
 
 
+    // Encode URI for acl, url, queryString
+    var pattern = /%../g;
+
+    if (options['url'])
+        options['url'] = encodeURI(options['url']);
+
+    logger.debug("Token Options: ", options);
+
     // Validate token options with Remote Test Case information
     var atk = new AuthToken(options, options['verbosity']);
     var isValidTokenOptions = true;
     if (rtcCase['_edge']['escape'] !== atk.options['escapeEarly']) isValidTokenOptions = false;
     if (rtcCase['_edge']['tokenName'] !== atk.options['tokenName']) isValidTokenOptions = false;
-    if (rtcCase['_edge']['algorithm'].toLowerCase() !== atk.options['algorithm']) isValidTokenOptions = false;
+    if (rtcCase['_edge']['algorithm'].toLowerCase() !== atk.options['algorithm'].toLowerCase()) isValidTokenOptions = false;
     if (rtcCase['_edge']['key'] !== atk.options['key']) isValidTokenOptions = false;
     if (rtcCase['_edge']['transitionKey'] && rtcCase['_edge']['transitionKey'] !== atk.options['key']) isValidTokenOptions = false;
     if (rtcCase['_edge']['salt'] && rtcCase['_edge']['salt'] !== atk.options['salt']) isValidTokenOptions = false;
 
 
-    if(!isValidTokenOptions) {
+    if (!isValidTokenOptions) {
         done(new Error("Token options is not match for Edge configuration"));
         return;
     }
@@ -65,24 +73,14 @@ function makeRequest(done, rtcCaseName, optionsName) {
     // prepare for request options
     var token = atk.generateToken();
     logger.debug(token);
-    var qs = rtcCase['_edge']['queryString']?encodeURIComponent(rtcCase['_edge']['queryString']) + '&' + token : token;
-
-    /*----
-    var qs = rtcCase['_edge']['queryString']?rtcCase['_edge']['queryString']:"";
-    qs = encodeURI(qs).replace(/!/g,'%21');
-    qs = qs.replace(/\(/g,'%28');
-    qs = qs.replace(/\)/g,'%29');
-
-    var _url = rtcCase['_edge']['queryString']?encodeURI(rtcCase._edge.url + '?' + qs) + '&' + token :
-        encodeURI(rtcCase._edge.url + '?') + token;
-
-    console.log(_url);
-
-    */
+    //var qs = rtcCase['_edge']['queryString']?encodeURIComponent(rtcCase['_edge']['queryString']) + '&' + token : token;
+    //var qs = rtcCase['_edge']['queryString']?encodeURI(rtcCase['_edge']['queryString']) + '&' + token : token;
+    //var qs = rtcCase['_edge']['queryString']?escape(rtcCase['_edge']['queryString']) + '&' + token : token;
+    var qs = rtcCase['_edge']['queryString'] ? encodeURI(rtcCase['_edge']['queryString']) + '&' + token : token;
 
     var reqOptions = {
         method: rtcCase._edge.method,
-        url: rtcCase._edge.url + '?' + qs,
+        url: encodeURI(rtcCase._edge.url) + '?' + qs,
         //url: _url,
         headers: {
             pragma: 'akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-true-cache-key, akamai-x-get-extracted-values, akamai-x-get-request-id, akamai-x-get-client-ip, akamai-x-feo-trace, akamai-x-get-ssl-client-session-id, akamai-x-seria-no, akamai-x-tapioca-trace'
@@ -110,21 +108,21 @@ function selectRtcs(rtd, rtcName) {
     return selectedTestCases;
 }
 
-describe("Query String Test", function () {
+describe("Query String Test", function() {
     rtd = JSON.parse(fs.readFileSync('./test/test_remote_query.json'));
 
-    describe("Escape ON & Ignore ON", function () {
+    describe("Escape [ON], Ignore QS [ON]", function() {
         this.timeout(10000);
 
         // Select whole test cases under each Rtcs
-        var selectedRtcs = selectRtcs(rtd,['query_01','query_02','query_03']);
-
-        /* or select test cases manually
-        var selectedRtcs = ['rtc03.m']; //*/
+        var selectedRtcs = selectRtcs(rtd, ['query_escape_ignore_method_get', 'query_escape_ignore_method_put',
+            'query_escape_ignore_method_post', 'query_escape_ignore_method_delete','query_escape_ignore_acl',
+            'query_escape_ignore_acl_resource' ,'query_escape_ignore_acl_resource_qs', 'query_escape_ignore_url',
+            'query_escape_ignore_url_qs']);
 
         //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
         async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
+            it(rtc, function(done) {
 
                 var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
 
@@ -135,20 +133,22 @@ describe("Query String Test", function () {
                     callback(null, done(err));
                 });
             });
-        }, function(err){
+        }, function(err) {
             if (err)
                 mlogger.error(err);
         });
     });
 
 
-    describe("Escape ON & Ignore OFF", function () {
+    describe("Escape [ON], Ignore QS [OFF]", function() {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['query_11','query_12','query_13']);
+        var selectedRtcs = selectRtcs(rtd, ['query_escape_method_get', 'query_escape_method_put', 'query_escape_method_post',
+            'query_escape_method_delete', 'query_escape_acl', 'query_escape_acl_resource',
+            'query_escape_acl_resource_qs', 'query_escape_url', 'query_escape_url_qs']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
+            it(rtc, function(done) {
                 var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
@@ -156,19 +156,21 @@ describe("Query String Test", function () {
                     callback(null, done(err));
                 });
             });
-        }, function(err){
+        }, function(err) {
             if (err)
                 mlogger.error(err);
         });
     });
 
-    describe("Escape OFF & Ignore OFF", function () {
+    describe("Escape [OFF], Ignore QS [OFF]", function() {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['query_21','query_22','query_23']);
+        var selectedRtcs = selectRtcs(rtd, ['query_method_get', 'query_method_put', 'query_method_post',
+            'query_method_delete', 'query_acl', 'query_acl_resource',
+            'query_acl_resource_qs', 'query_url', 'query_url_safechars', 'query_url_qs', 'query_url_qs_safechars']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
+            it(rtc, function(done) {
                 var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
@@ -176,19 +178,20 @@ describe("Query String Test", function () {
                     callback(null, done(err));
                 });
             });
-        }, function(err){
+        }, function(err) {
             if (err)
                 mlogger.error(err);
         });
     });
 
-    describe("Escape OFF & Ignore ON", function () {
+    describe("EEscape [OFF], Ignore QS [ON]", function() {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['query_31','query_32','query_33']);
+        var selectedRtcs = selectRtcs(rtd, ['query_ignore_method_get', 'query_ignore_acl', 'query_ignore_acl_resource',
+            'query_ignore_acl_resource_qs', 'query_ignore_url', 'query_ignore_url']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
+            it(rtc, function(done) {
                 var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
@@ -196,13 +199,114 @@ describe("Query String Test", function () {
                     callback(null, done(err));
                 });
             });
-        }, function(err){
+        }, function(err) {
             if (err)
                 mlogger.error(err);
         });
     });
+
 });
 
+describe("MD5 Query String Test", function() {
+    rtd = JSON.parse(fs.readFileSync('./test/test_remote_query.json'));
+
+    describe("Escape [ON], Ignore QS [ON]", function() {
+        this.timeout(10000);
+
+        // Select whole test cases under each Rtcs
+        var selectedRtcs = selectRtcs(rtd, ['md5_query_escape_ignore_method_get', 'md5_query_escape_ignore_method_put',
+            'md5_query_escape_ignore_method_post', 'md5_query_escape_ignore_method_delete','md5_query_escape_ignore_acl',
+            'md5_query_escape_ignore_acl_resource' ,'md5_query_escape_ignore_acl_resource_qs', 'md5_query_escape_ignore_url',
+            'md5_query_escape_ignore_url_qs']);
+
+        //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
+        async.map(selectedRtcs, function(rtc, callback) {
+            it(rtc, function(done) {
+
+                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+
+                opt.req({}, function(err, res) {
+                    logger.debug("RequestUrl: ", res.request.uri.href);
+
+                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
+                    callback(null, done(err));
+                });
+            });
+        }, function(err) {
+            if (err)
+                mlogger.error(err);
+        });
+    });
+
+
+    describe("Escape [ON], Ignore QS [OFF]", function() {
+        this.timeout(10000);
+        var selectedRtcs = selectRtcs(rtd, ['md5_query_escape_method_get', 'md5_query_escape_method_put', 'md5_query_escape_method_post',
+            'md5_query_escape_method_delete', 'md5_query_escape_acl', 'md5_query_escape_acl_resource',
+            'md5_query_escape_acl_resource_qs', 'md5_query_escape_url', 'md5_query_escape_url_qs']);
+
+        //var selectedRtcs = selectRtcs(rtd,['rtc13']);
+        async.map(selectedRtcs, function(rtc, callback) {
+            it(rtc, function(done) {
+                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                opt.req({}, function(err, res) {
+                    logger.debug("RequestUrl: ", res.request.uri.href);
+                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
+                    callback(null, done(err));
+                });
+            });
+        }, function(err) {
+            if (err)
+                mlogger.error(err);
+        });
+    });
+
+    describe("Escape [OFF], Ignore QS [OFF]", function() {
+        this.timeout(10000);
+        var selectedRtcs = selectRtcs(rtd, ['md5_query_method_get', 'md5_query_method_put', 'md5_query_method_post',
+            'md5_query_method_delete', 'md5_query_acl', 'md5_query_acl_resource',
+            'md5_query_acl_resource_qs', 'md5_query_url', 'md5_query_url_safechars', 'md5_query_url_qs', 'md5_query_url_qs_safechars']);
+
+        //var selectedRtcs = selectRtcs(rtd,['rtc13']);
+        async.map(selectedRtcs, function(rtc, callback) {
+            it(rtc, function(done) {
+                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                opt.req({}, function(err, res) {
+                    logger.debug("RequestUrl: ", res.request.uri.href);
+                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
+                    callback(null, done(err));
+                });
+            });
+        }, function(err) {
+            if (err)
+                mlogger.error(err);
+        });
+    });
+
+    describe("EEscape [OFF], Ignore QS [ON]", function() {
+        this.timeout(10000);
+        var selectedRtcs = selectRtcs(rtd, ['md5_query_ignore_method_get', 'md5_query_ignore_acl', 'md5_query_ignore_acl_resource',
+            'md5_query_ignore_acl_resource_qs', 'md5_query_ignore_url', 'md5_query_ignore_url']);
+
+        //var selectedRtcs = selectRtcs(rtd,['rtc13']);
+        async.map(selectedRtcs, function(rtc, callback) {
+            it(rtc, function(done) {
+                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                opt.req({}, function(err, res) {
+                    logger.debug("RequestUrl: ", res.request.uri.href);
+                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
+                    callback(null, done(err));
+                });
+            });
+        }, function(err) {
+            if (err)
+                mlogger.error(err);
+        });
+    });
+
+});
+
+/*
 describe("Cookie Test", function () {
     rtd = JSON.parse(fs.readFileSync('./test/test_remote_cookie.json'));
     describe("Escape ON & Ignore ON", function () {
@@ -210,9 +314,6 @@ describe("Cookie Test", function () {
 
         // Select whole test cases under each Rtcs
         var selectedRtcs = selectRtcs(rtd,['cookie_01','cookie_02','cookie_03']);
-
-        /* or select test cases manually
-         var selectedRtcs = ['rtc03.m']; //*/
 
         //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
         async.map(selectedRtcs, function(rtc, callback) {
@@ -304,9 +405,6 @@ describe("Header Test", function () {
         // Select whole test cases under each Rtcs
         var selectedRtcs = selectRtcs(rtd,['header_01','header_02','header_03']);
 
-        /* or select test cases manually
-         var selectedRtcs = ['rtc03.m']; //*/
-
         //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function (done) {
@@ -396,9 +494,6 @@ describe("SALT Test", function () {
         // Select whole test cases under each Rtcs
         var selectedRtcs = selectRtcs(rtd,['salt_01','salt_02','salt_03']);
 
-        /* or select test cases manually
-         var selectedRtcs = ['rtc03.m']; //*/
-
         //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function (done) {
@@ -418,3 +513,4 @@ describe("SALT Test", function () {
         });
     });
 });
+*/
