@@ -10,7 +10,7 @@ var expect = require('chai').expect,
     logger = new Log('info'),
     async = require('async');
 
-var rtd = {};
+//var rtd = {};
 
 /**
  * Make request object
@@ -19,7 +19,7 @@ var rtd = {};
  * @param optionsName (string) Remote Test Case token options name in test_remote_xxx.json file. ex) 'a'
  * @returns {request} request object
  */
-function makeRequest(done, rtcCaseName, optionsName) {
+function makeRequest(rtd, done, rtcCaseName, optionsName) {
     var rtcCase = rtd[rtcCaseName];
     if (!rtcCase) {
         done(new Error("Invalid Case Name"));
@@ -76,16 +76,26 @@ function makeRequest(done, rtcCaseName, optionsName) {
     //var qs = rtcCase['_edge']['queryString']?encodeURIComponent(rtcCase['_edge']['queryString']) + '&' + token : token;
     //var qs = rtcCase['_edge']['queryString']?encodeURI(rtcCase['_edge']['queryString']) + '&' + token : token;
     //var qs = rtcCase['_edge']['queryString']?escape(rtcCase['_edge']['queryString']) + '&' + token : token;
-    var qs = rtcCase['_edge']['queryString'] ? encodeURI(rtcCase['_edge']['queryString']) + '&' + token : token;
+    var qs = rtcCase['_edge']['queryString'] ? encodeURI(rtcCase['_edge']['queryString']) : '';
 
     var reqOptions = {
         method: rtcCase._edge.method,
-        url: encodeURI(rtcCase._edge.url) + '?' + qs,
-        //url: _url,
+        url: qs === '' ? encodeURI(rtcCase._edge.url) : encodeURI(rtcCase._edge.url) + '?' + qs,
         headers: {
             pragma: 'akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-true-cache-key, akamai-x-get-extracted-values, akamai-x-get-request-id, akamai-x-get-client-ip, akamai-x-feo-trace, akamai-x-get-ssl-client-session-id, akamai-x-seria-no, akamai-x-tapioca-trace'
         }
     };
+
+
+    // Token Location : Query String, Cookie, Header manipulation
+        if (rtcCase['_edge']['tokenLocation'].toLowerCase() == 'query')
+            reqOptions.url += rtcCase['_edge']['queryString']? '&' + token : '?' + token;
+        else if (rtcCase['_edge']['tokenLocation'].toLowerCase() == 'cookie')
+            reqOptions.headers['Cookie'] = token;
+        else if (rtcCase['_edge']['tokenLocation'].toLowerCase() == 'header')
+            reqOptions.headers[atk.options['tokenName']] = atk.options['tokenValue'];
+
+    logger.debug('[Request Options]', reqOptions);
 
     // prepare for request object
 
@@ -109,7 +119,7 @@ function selectRtcs(rtd, rtcName) {
 }
 
 describe("Query String Test", function() {
-    rtd = JSON.parse(fs.readFileSync('./test/test_remote_query.json'));
+    var rtd = JSON.parse(fs.readFileSync('./test/test_remote_query.json'));
 
     describe("Escape [ON], Ignore QS [ON]", function() {
         this.timeout(10000);
@@ -124,7 +134,7 @@ describe("Query String Test", function() {
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
 
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
 
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
@@ -149,7 +159,7 @@ describe("Query String Test", function() {
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -171,7 +181,7 @@ describe("Query String Test", function() {
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -184,7 +194,7 @@ describe("Query String Test", function() {
         });
     });
 
-    describe("EEscape [OFF], Ignore QS [ON]", function() {
+    describe("Escape [OFF], Ignore QS [ON]", function() {
         this.timeout(10000);
         var selectedRtcs = selectRtcs(rtd, ['query_ignore_method_get', 'query_ignore_acl', 'query_ignore_acl_resource',
             'query_ignore_acl_resource_qs', 'query_ignore_url', 'query_ignore_url']);
@@ -192,7 +202,7 @@ describe("Query String Test", function() {
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -207,23 +217,22 @@ describe("Query String Test", function() {
 
 });
 
-describe("MD5 Query String Test", function() {
-    rtd = JSON.parse(fs.readFileSync('./test/test_remote_query.json'));
+describe("Cookie Test", function() {
+    var rtd = JSON.parse(fs.readFileSync('./test/test_remote_cookie.json'));
 
     describe("Escape [ON], Ignore QS [ON]", function() {
         this.timeout(10000);
 
         // Select whole test cases under each Rtcs
-        var selectedRtcs = selectRtcs(rtd, ['md5_query_escape_ignore_method_get', 'md5_query_escape_ignore_method_put',
-            'md5_query_escape_ignore_method_post', 'md5_query_escape_ignore_method_delete','md5_query_escape_ignore_acl',
-            'md5_query_escape_ignore_acl_resource' ,'md5_query_escape_ignore_acl_resource_qs', 'md5_query_escape_ignore_url',
-            'md5_query_escape_ignore_url_qs']);
+        var selectedRtcs = selectRtcs(rtd, ['cookie_escape_ignore_method_get', 'cookie_escape_ignore_acl',
+            'cookie_escape_ignore_acl_resource', 'cookie_escape_ignore_acl_resource_qs','cookie_escape_ignore_url',
+            'cookie_escape_ignore_url_qs']);
 
         //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
 
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
 
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
@@ -241,14 +250,13 @@ describe("MD5 Query String Test", function() {
 
     describe("Escape [ON], Ignore QS [OFF]", function() {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd, ['md5_query_escape_method_get', 'md5_query_escape_method_put', 'md5_query_escape_method_post',
-            'md5_query_escape_method_delete', 'md5_query_escape_acl', 'md5_query_escape_acl_resource',
-            'md5_query_escape_acl_resource_qs', 'md5_query_escape_url', 'md5_query_escape_url_qs']);
+        var selectedRtcs = selectRtcs(rtd, ['cookie_escape_method_get', 'cookie_escape_acl', 'cookie_escape_acl_resource',
+            'cookie_escape_acl_resource_qs', 'cookie_escape_url', 'cookie_escape_url_qs']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -263,14 +271,14 @@ describe("MD5 Query String Test", function() {
 
     describe("Escape [OFF], Ignore QS [OFF]", function() {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd, ['md5_query_method_get', 'md5_query_method_put', 'md5_query_method_post',
-            'md5_query_method_delete', 'md5_query_acl', 'md5_query_acl_resource',
-            'md5_query_acl_resource_qs', 'md5_query_url', 'md5_query_url_safechars', 'md5_query_url_qs', 'md5_query_url_qs_safechars']);
+        var selectedRtcs = selectRtcs(rtd, ['cookie_method_get', 'cookie_acl', 'cookie_acl_resource',
+            'cookie_acl_resource_qs', 'cookie_url', 'cookie_url_safechars',
+            'cookie_url_qs', 'cookie_url_qs_safechars']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -283,15 +291,16 @@ describe("MD5 Query String Test", function() {
         });
     });
 
-    describe("EEscape [OFF], Ignore QS [ON]", function() {
+    describe("Escape [OFF], Ignore QS [ON]", function() {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd, ['md5_query_ignore_method_get', 'md5_query_ignore_acl', 'md5_query_ignore_acl_resource',
-            'md5_query_ignore_acl_resource_qs', 'md5_query_ignore_url', 'md5_query_ignore_url']);
+        var selectedRtcs = selectRtcs(rtd, ['cookie_ignore_method_get', 'cookie_ignore_acl', 'cookie_ignore_acl_resource',
+            'cookie_ignore_acl_resource_qs', 'cookie_ignore_url', 'cookie_url_ignore_safechars','cookie_ignore_url_qs',
+            'cookie_url_ignore_qs_safechars']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function(done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -305,111 +314,21 @@ describe("MD5 Query String Test", function() {
     });
 
 });
-
-/*
-describe("Cookie Test", function () {
-    rtd = JSON.parse(fs.readFileSync('./test/test_remote_cookie.json'));
-    describe("Escape ON & Ignore ON", function () {
-        this.timeout(10000);
-
-        // Select whole test cases under each Rtcs
-        var selectedRtcs = selectRtcs(rtd,['cookie_01','cookie_02','cookie_03']);
-
-        //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
-        async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
-
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
-
-                opt.req({}, function(err, res) {
-                    logger.debug("RequestUrl: ", res.request.uri.href);
-
-                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
-                    callback(null, done(err));
-                });
-            });
-        }, function(err){
-            if (err)
-                mlogger.error(err);
-        });
-    });
-
-
-    describe("Escape ON & Ignore OFF", function () {
-        this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['cookie_11','cookie_12','cookie_13']);
-
-        //var selectedRtcs = selectRtcs(rtd,['rtc13']);
-        async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
-                opt.req({}, function(err, res) {
-                    logger.debug("RequestUrl: ", res.request.uri.href);
-                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
-                    callback(null, done(err));
-                });
-            });
-        }, function(err){
-            if (err)
-                mlogger.error(err);
-        });
-    });
-
-    describe("Escape OFF & Ignore OFF", function () {
-        this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['cookie_21','cookie_22','cookie_23']);
-
-        //var selectedRtcs = selectRtcs(rtd,['rtc13']);
-        async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
-                opt.req({}, function(err, res) {
-                    logger.debug("RequestUrl: ", res.request.uri.href);
-                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
-                    callback(null, done(err));
-                });
-            });
-        }, function(err){
-            if (err)
-                mlogger.error(err);
-        });
-    });
-
-    describe("Escape OFF & Ignore ON", function () {
-        this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['cookie_31','cookie_32','cookie_33']);
-
-        //var selectedRtcs = selectRtcs(rtd,['rtc13']);
-        async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
-                opt.req({}, function(err, res) {
-                    logger.debug("RequestUrl: ", res.request.uri.href);
-                    expect(res.statusCode).to.be.oneOf(opt.expect.code);
-                    callback(null, done(err));
-                });
-            });
-        }, function(err){
-            if (err)
-                mlogger.error(err);
-        });
-    });
-});
-
 
 describe("Header Test", function () {
-    rtd = JSON.parse(fs.readFileSync('./test/test_remote_cookie_header.json'));
+    rtd = JSON.parse(fs.readFileSync('./test/test_remote_header.json'));
     describe("Escape ON & Ignore ON", function () {
         this.timeout(10000);
 
         // Select whole test cases under each Rtcs
-        var selectedRtcs = selectRtcs(rtd,['header_01','header_02','header_03']);
+        var selectedRtcs = selectRtcs(rtd,['header_escape_ignore_method_get','header_escape_ignore_acl','header_escape_ignore_acl_resource'
+        ,'header_escape_ignore_acl_resource_qs', 'header_escape_ignore_url', 'header_escape_ignore_url_qs']);
 
         //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function (done) {
 
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
 
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
@@ -427,12 +346,13 @@ describe("Header Test", function () {
 
     describe("Escape ON & Ignore OFF", function () {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['header_11','header_12','header_13']);
+        var selectedRtcs = selectRtcs(rtd,['header_escape_method_get','header_escape_acl','header_escape_acl_resource'
+        ,'header_escape_acl_resource_qs', 'header_escape_url', 'header_escape_url_qs', 'header_escape_url_qs_safechar']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function (done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -447,12 +367,13 @@ describe("Header Test", function () {
 
     describe("Escape OFF & Ignore OFF", function () {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['header_21','header_22','header_23']);
+        var selectedRtcs = selectRtcs(rtd,['header_method_get','header_acl','header_acl_resource'
+        ,'header_acl_resource_qs', 'header_url', 'header_url_safechars', 'header_url_qs']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function (done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -467,12 +388,14 @@ describe("Header Test", function () {
 
     describe("Escape OFF & Ignore ON", function () {
         this.timeout(10000);
-        var selectedRtcs = selectRtcs(rtd,['header_31','header_32','header_33']);
+        var selectedRtcs = selectRtcs(rtd,['header_ignore_method_get','header_ignore_acl','header_ignore_acl_resource'
+        ,'header_ignore_acl_resource_qs', 'header_ignore_url', 'header_url_ignore_safechars', 'header_ignore_url_qs'
+        ,'header_url_ignore_qs_safechars']);
 
         //var selectedRtcs = selectRtcs(rtd,['rtc13']);
         async.map(selectedRtcs, function(rtc, callback) {
             it(rtc, function (done) {
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
                     expect(res.statusCode).to.be.oneOf(opt.expect.code);
@@ -486,19 +409,22 @@ describe("Header Test", function () {
     });
 });
 
-describe("SALT Test", function () {
-    rtd = JSON.parse(fs.readFileSync('./test/test_remote_cookie_salt.json'));
-    describe("Escape ON & Ignore ON", function () {
+describe("SALT Test", function() {
+    var rtd = JSON.parse(fs.readFileSync('./test/test_remote_salt.json'));
+
+    describe("Escape [ON], Ignore QS [ON]", function() {
         this.timeout(10000);
 
         // Select whole test cases under each Rtcs
-        var selectedRtcs = selectRtcs(rtd,['salt_01','salt_02','salt_03']);
+        var selectedRtcs = selectRtcs(rtd, ['salt_escape_ignore_method_get', 'salt_escape_ignore_acl',
+            'salt_escape_ignore_acl_resource', 'salt_escape_ignore_acl_resource_qs','salt_escape_ignore_url',
+            'salt_escape_ignore_url_qs']);
 
         //async.mapLimit(selectedRtcs,5, function(rtc, callback) {
         async.map(selectedRtcs, function(rtc, callback) {
-            it(rtc, function (done) {
+            it(rtc, function(done) {
 
-                var opt = makeRequest(done, rtc.split(".")[0], rtc.split(".")[1]);
+                var opt = makeRequest(rtd, done, rtc.split(".")[0], rtc.split(".")[1]);
 
                 opt.req({}, function(err, res) {
                     logger.debug("RequestUrl: ", res.request.uri.href);
@@ -507,10 +433,10 @@ describe("SALT Test", function () {
                     callback(null, done(err));
                 });
             });
-        }, function(err){
+        }, function(err) {
             if (err)
                 mlogger.error(err);
         });
     });
+
 });
-*/

@@ -87,7 +87,7 @@ function refineParsedRtc(rtc) {
 }
 
 async.map([[2,'./test/test_remote_query.json'],[3,'./test/test_remote_cookie.json'],
-    [4,'./test/test_remote_header.json'],[5,'./test/test_remote_salt.json']], function(option,callback) {
+    [4,'./test/test_remote_header.json'],[5,'./test/test_remote_salt.json'],[7,'./test/test_remote_md5.json']], function(option,callback) {
     util.parseData('./test/generator/TestMetrics_src.xlsx', {sheet: option[0]}, function (err, data) {
 
         var rtc = {};
