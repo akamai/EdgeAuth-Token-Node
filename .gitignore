@@ -160,18 +160,6 @@ local.properties
 # JIRA plugin
 atlassian-ide-plugin.xml
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-/Java_Classes_분석.pptx
-/.idea/
-/temp/
-/TestMetrics.xlsx
-/test/test_remote_cookie.json
-/test/test_remote_salt.json
-/test/test_remote_header.json
-/test/test_remote_query.json
-/test/test_local_old.json
-/test/generator/~$TestMetrics_src.xlsx
+# Others
+.idea
+.DS_Store
