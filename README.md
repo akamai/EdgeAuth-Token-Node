@@ -43,11 +43,11 @@ var DURATION = 500 // seconds
 
 // Function just for the simple test
 function makeRequest(options, callback) {
-	var request = http.request(options, (res) => {
-		callback(res)
-	})
-	request.on('error', (err) => {
-      callback(err)
+    var request = http.request(options, (res) => {
+        callback(res)
+    })
+    request.on('error', (err) => {
+        callback(err)
     })
     request.end()
 }
@@ -61,15 +61,15 @@ function makeRequest(options, callback) {
 ```Javascript
 // [EXAMPLE 1] Cookie
 var ea = new EdgeAuth({
-	key: EA_ENCRYPTION_KEY,
-	windowSeconds: DURATION,
-	escapeEarly: true
+    key: EA_ENCRYPTION_KEY,
+    windowSeconds: DURATION,
+    escapeEarly: true
 })
 var token = ea.generateURLToken("/akamai/edgeauth")
 var options = {
-	hostname: EA_HOSTNAME,
-	path: '/akamai/edgeauth'
-	'Cookie': `${ea.options.tokenName}=${token}`
+    hostname: EA_HOSTNAME,
+    path: '/akamai/edgeauth'
+    'Cookie': `${ea.options.tokenName}=${token}`
 }
 makeRequest(options, function(res) {
     console.log(res) // If pass, it won't response 403 code.
@@ -78,8 +78,8 @@ makeRequest(options, function(res) {
 // [EXAMPLE 2] Query string
 token = ea.generateURLToken("/akamai/edgeauth")
 options = {
-	hostname: EA_HOSTNAME,
-	path: `/akamai/edgeauth?${ea.options.tokenName}=${token}`
+    hostname: EA_HOSTNAME,
+    path: `/akamai/edgeauth?${ea.options.tokenName}=${token}`
 }
 makeRequest(options, function(res) {
     console.log(res)
@@ -98,33 +98,33 @@ Escape token input (off) == escapeEarly (false)
 ```Javascript
 // [EXAMPLE 1] Header using *
 var ea = new EdgeAuth({
-	key: EA_ENCRYPTION_KEY,
-	windowSeconds: DURATION,
-	escapeEarly: false
+    key: EA_ENCRYPTION_KEY,
+    windowSeconds: DURATION,
+    escapeEarly: false
 })
 var token = ea.generateURLToken("/akamai/edgeauth/*")
 var options = {
-	hostname: EA_HOSTNAME,
-	path: "/akamai/edgeauth/something"
-	headers: {[ea.options.tokenName]: token}
+    hostname: EA_HOSTNAME,
+    path: "/akamai/edgeauth/something"
+    headers: {[ea.options.tokenName]: token}
 }
 makeRequest(options, function(res) {
     console.log(res)
 })
 
 
-// 2) Cookie using ACL delimiter
+// [EXAMPLE 2] Cookie using ACL delimiter
 var ea = new EdgeAuth({
-	key: EA_ENCRYPTION_KEY,
-	windowSeconds: DURATION,
-	escapeEarly: false
+    key: EA_ENCRYPTION_KEY,
+    windowSeconds: DURATION,
+    escapeEarly: false
 })
 var acl = ["/akamai/edgeauth/??", "/akamai/edgeauth/list/*"]
 var token = ea.generateURLToken(acl)
 var options = {
-	hostname: EA_HOSTNAME,
-	path: "/akamai/edgeauth/22"
-	Cookie: "ea.options.tokenName: token"
+    hostname: EA_HOSTNAME,
+    path: "/akamai/edgeauth/22"
+    Cookie: `${ea.options.tokenName}: ${token}`
 }
 makeRequest(options, function(res) {
     console.log(res)
