@@ -8,7 +8,9 @@
 
 Akamai-EdgeAuth is Akamai Edge Authorization Token in the HTTP Cookie, Query String and Header for a client.
 You can configure it in the Property Manager at https://control.akamai.com.
-It's a behavior which is Auth Token 2.0 Verification.  
+It's a behavior which is Auth Token 2.0 Verification.
+
+Akamai-EdgeAuth supports for Node.js 4.0+
 
 <div style="text-align:center"><img src=https://github.com/AstinCHOI/akamai-asset/blob/master/edgeauth/edgeauth.png?raw=true/></div>
 
