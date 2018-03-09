@@ -36,7 +36,7 @@ const http = require('http') // Module for the test
 
 var EA_HOSTNAME = 'edgeauth.akamaized.net'
 var EA_ENCRYPTION_KEY = 'YourEncryptionKey' 
-var DURATION = 500 # seconds
+var DURATION = 500 // seconds
 
 
 // Function just for the simple test
