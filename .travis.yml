@@ -8,7 +8,8 @@ node_js:
 - "4"
 
 install:
-    npm install --global mocha
+    - npm install
+    - npm install --global mocha
 
 script:
   - export TEST_MODE=TRAVIS
@@ -16,6 +17,4 @@ script:
   - export EA_ENCRYPTION_KEY=$EA_ENCRYPTION_KEY
   - export EA_TRANSITION_KEY=$EA_TRANSITION_KEY
   - export EA_SALT=$EA_SALT
-  - npm install
-  - rm -rf /usr/local/lib/node_modules/npm
   - npm test
