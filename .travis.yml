@@ -17,4 +17,5 @@ script:
   - export EA_TRANSITION_KEY=$EA_TRANSITION_KEY
   - export EA_SALT=$EA_SALT
   - npm install
-  - npm test
+  - mocha --no-timeouts test/test-url-edgeauth.js
+  - mocha --no-timeouts test/test-acl-edgeauth.js
