@@ -23,8 +23,8 @@
   "author": "Astin Choi <asciineo@gmail.com>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "pre-commit": "^1.2.2"
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4",
+    "pre-commit": "^0.1.0"
   }
 }
