@@ -17,4 +17,5 @@ script:
   - export EA_ENCRYPTION_KEY=$EA_ENCRYPTION_KEY
   - export EA_TRANSITION_KEY=$EA_TRANSITION_KEY
   - export EA_SALT=$EA_SALT
-  - npm test
+  # - npm test
+  - mocha --no-timeouts test/test-acl-edgeauth.js
