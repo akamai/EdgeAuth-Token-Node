@@ -131,7 +131,8 @@ makeRequest(options, function(res) {
 })
 
 ```
-* ACL can use the wildcard(\*,?) in the path.
+* ACL can use the wildcard(\*, ?) in the path.
+* Don't use '!' in your path because it's ACL Delimiter
 * Use 'escapeEarly=false' as default setting but it doesn't matter turning on/off 'Escape token input' option in the Property Manager
 
 
