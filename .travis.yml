@@ -12,9 +12,9 @@ install:
 
 script:
   - export TEST_MODE=TRAVIS
-  - export ET_HOSTNAME=$ET_HOSTNAME
-  - export ET_ENCRYPTION_KEY=$ET_ENCRYPTION_KEY
-  - export ET_TRANSITION_KEY=$ET_TRANSITION_KEY
-  - export ET_SALT=$ET_SALT
+  - export EA_HOSTNAME=$EA_HOSTNAME
+  - export EA_ENCRYPTION_KEY=$EA_ENCRYPTION_KEY
+  - export EA_TRANSITION_KEY=$EA_TRANSITION_KEY
+  - export EA_SALT=$EA_SALT
   - npm install
   - npm test
