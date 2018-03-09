@@ -1,37 +1,30 @@
 {
-  "name": "akamai-authtoken",
+  "name": "akamai-edgeauth",
   "version": "0.1.0",
-  "description": "Akamai AuthToken Library for Node",
-  "main": "./lib/akamai/authtoken/authtoken",
+  "description": "Akamai Edge Authorization Token for Property Manager Behavior",
+  "main": "./lib/edgeAuth.js",
   "scripts": {
-    "generate": "node ./test/generator/generateTestRemote.js",
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "mocha --reporter spec --no-timeouts --ui bdd test/test-*"
   },
+  "pre-commit": [
+    "test"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AstinCHOI/Akamai-AuthToken-Node.git"
+    "url": "https://github.com/AstinCHOI/Akamai-EdgeAuth-Node"
   },
   "keywords": [
-    "authtoken",
+    "edgeauth",
     "akamai",
-    "akamai-authtoken"
+    "token",
+    "authorization",
+    "property manager"
   ],
-  "author": "Joon Han",
+  "author": "Astin Choi <asciineo@gmail.com>",
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/AstinCHOI/Akamai-AuthToken-Node/issues"
-  },
-  "homepage": "https://github.com/AstinCHOI/Akamai-AuthToken-Node#readme",
-  "dependencies": {
-    "async": "^2.3.0",
-    "excel-as-json": "^2.0.0",
-    "json-util": "^2.2.0",
-    "log": "^1.4.0",
-    "mocha-logger": "^1.0.5"
-  },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
-    "request": "^2.81.0"
+    "pre-commit": "^1.2.2"
   }
 }

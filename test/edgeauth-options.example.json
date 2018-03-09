@@ -1,0 +1,6 @@
+{
+	"EA_HOSTNAME" : "akamai edge host name",
+	"EA_ENCRYPTION_KEY" : "your encryption key",
+	"EA_TRANSITION_KEY" : "your trainsition key (optional)",
+	"EA_SALT" : "your salt key (optional and deprecated)"
+}

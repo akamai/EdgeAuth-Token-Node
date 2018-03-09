@@ -163,3 +163,5 @@ atlassian-ide-plugin.xml
 # Others
 .idea
 .DS_Store
+test/edgeauth-options.json
+package-lock.json
