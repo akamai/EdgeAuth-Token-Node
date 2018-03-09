@@ -17,4 +17,4 @@ script:
   - export EA_ENCRYPTION_KEY=$EA_ENCRYPTION_KEY
   - export EA_TRANSITION_KEY=$EA_TRANSITION_KEY
   - export EA_SALT=$EA_SALT
-  - mocha --reporter spec --no-timeouts --ui bdd test/test-*
+  - npm test

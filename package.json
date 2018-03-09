@@ -4,7 +4,7 @@
   "description": "Akamai Edge Authorization Token for Property Manager Behavior",
   "main": "./lib/edgeauth.js",
   "scripts": {
-    "test": "mocha --reporter spec --no-timeouts --ui bdd test/test-*"
+    "test": "mocha --reporter spec --no-timeouts --ui bdd .test/test-*"
   },
   "pre-commit": [
     "test"
