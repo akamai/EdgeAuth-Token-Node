@@ -15,10 +15,15 @@ It's a behavior which is Auth Token 2.0 Verification.
 
 ## Installation
 
-To install Akamai Edge Authorization Token for Node.js:  
+To install Akamai Edge Authorization Token with npm global:  
 
-```shell
-$ npm install akamai-edgeauth
+```Shell
+$ npm install --global akamai-edgeauth
+```
+
+or as a development dependency for your project:
+```Shell
+$ npm install --save akamai-edgeauth
 ```
   
 
