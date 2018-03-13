@@ -174,7 +174,7 @@ generateACLToken(acl) {}
 
 ## Command
 
-You can use the command with [cms-edgeauth.js](https://github.com/AstinCHOI/Akamai-EdgeAuth-Node/blob/master/cms-edgeauth.js) in your terminal without installing akamai-edgeauth.
+You can use the command with [cms-edgeauth.js](https://github.com/AstinCHOI/Akamai-EdgeAuth-Node/blob/master/cms-edgeauth.js) in your terminal with [commander](https://www.npmjs.com/package/commander) to generate the token.
 
 ```Shell
 $ npm install commander --save
