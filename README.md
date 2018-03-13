@@ -20,7 +20,7 @@ Akamai-EdgeAuth supports for Node.js 4.0+
 To install Akamai Edge Authorization Token with npm:  
 
 ```Shell
-$ npm install --save akamai-edgeauth
+$ npm install akamai-edgeauth --save
 ```
   
 
