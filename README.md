@@ -68,11 +68,11 @@ var ea = new EdgeAuth({
 var token = ea.generateURLToken("/akamai/edgeauth")
 var options = {
     hostname: EA_HOSTNAME,
-    path: '/akamai/edgeauth'
+    path: '/akamai/edgeauth',
     'Cookie': `${ea.options.tokenName}=${token}`
 }
 makeRequest(options, function(res) {
-    console.log(res) // If pass, it won't response 403 code.
+    console.log(res.statusCode) // If pass, it won't response 403 code.
 })
 
 // [EXAMPLE 2] Query string
@@ -82,7 +82,7 @@ options = {
     path: `/akamai/edgeauth?${ea.options.tokenName}=${token}`
 }
 makeRequest(options, function(res) {
-    console.log(res)
+    console.log(res.statusCode)
 })
 ```
 * 'Escape token input' option in the Property Manager corresponds to 'escapeEarly' in the code.  
@@ -105,11 +105,11 @@ var ea = new EdgeAuth({
 var token = ea.generateURLToken("/akamai/edgeauth/*")
 var options = {
     hostname: EA_HOSTNAME,
-    path: "/akamai/edgeauth/something"
+    path: "/akamai/edgeauth/something",
     headers: {[ea.options.tokenName]: token}
 }
 makeRequest(options, function(res) {
-    console.log(res)
+    console.log(res.statusCode)
 })
 
 
@@ -123,11 +123,11 @@ var acl = ["/akamai/edgeauth/??", "/akamai/edgeauth/list/*"]
 var token = ea.generateURLToken(acl)
 var options = {
     hostname: EA_HOSTNAME,
-    path: "/akamai/edgeauth/22"
+    path: "/akamai/edgeauth/22",
     Cookie: `${ea.options.tokenName}: ${token}`
 }
 makeRequest(options, function(res) {
-    console.log(res)
+    console.log(res.statusCode)
 })
 
 ```
