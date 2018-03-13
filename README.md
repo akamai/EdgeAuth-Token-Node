@@ -17,13 +17,8 @@ Akamai-EdgeAuth supports for Node.js 4.0+
 
 ## Installation
 
-To install Akamai Edge Authorization Token with npm global:  
+To install Akamai Edge Authorization Token with npm:  
 
-```Shell
-$ npm install --global akamai-edgeauth
-```
-
-or as a development dependency for your project:
 ```Shell
 $ npm install --save akamai-edgeauth
 ```
@@ -175,3 +170,15 @@ generateACLToken(acl) {}
 |-----------|-------------|
 | url | Single URL path (String) |
 | acl | Access control list using the wildcard(\*, ?) and can be delimited by '!' (String or Array) |
+
+
+## Command
+
+You can use the command with [cms-edgeauth.js](https://github.com/AstinCHOI/Akamai-EdgeAuth-Node/blob/master/cms-edgeauth.js) in your terminal without installing akamai-edgeauth.
+
+```Shell
+$ npm install commander --save
+$ node cms-edgeauth.js --key YourEncryptionKey --window 5000 --url /hello/world --escape_early
+```
+
+Use -h or --help option for the detail.
