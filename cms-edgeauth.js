@@ -230,7 +230,7 @@ var token
 if (program.acl) {
 	token = ea.generateACLToken(program.acl)
 } else { // program.url
-	token = ea.generateACLToken(program.url)
+	token = ea.generateURLToken(program.url)
 }
 
 console.log("### Cookie or Query String ###")
