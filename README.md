@@ -8,7 +8,7 @@
 
 Akamai-EdgeAuth is Akamai Edge Authorization Token in the HTTP Cookie, Query String and Header for a client.
 You can configure it in the Property Manager at https://control.akamai.com.
-It's a behavior which is Auth Token 2.0 Verification.
+It's the behaviors which is Auth Token 2.0 Verification and Segmented Media Protection.
 
 Akamai-EdgeAuth supports for Node.js 4.0+
 
@@ -170,6 +170,13 @@ generateACLToken(acl) {}
 |-----------|-------------|
 | url | Single URL path (String) |
 | acl | Access control list using the wildcard(\*, ?) and can be delimited by '!' (String or Array) |
+
+
+## Others
+
+If you use the **Segmented Media Protection** behavior in AMD(Adaptive Media Delivery) Product, **tokenName(options.tokenName)** should be '**hdnts**'.
+
+<div style="text-align:center"><img src=https://github.com/AstinCHOI/akamai-asset/blob/master/edgeauth/segmented_media_protection.png?raw=true/></div>
 
 
 ## Command
