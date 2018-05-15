@@ -1,6 +1,6 @@
 {
   "name": "akamai-edgeauth",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Akamai Edge Authorization Token for Property Manager Behavior",
   "main": "./lib/edgeauth.js",
   "scripts": {

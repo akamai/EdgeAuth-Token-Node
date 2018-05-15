@@ -146,21 +146,21 @@ class EdgeAuth {
 | options.tokenType | Select a preset. (Not Supported Yet) |
 | options.tokenName | Parameter name for the new token. [ Default: \_\_token\_\_ ] |
 | options.key | Secret required to generate the token. It must be hexadecimal digit string with even-length. |
-| options.algorithm  | Algorithm to use to generate the token. (sha1, sha256, or md5) [ Default:sha256 ] |
+| options.algorithm  | Algorithm to use to generate the token. ('sha1', 'sha256', or 'md5') [ Default: 'sha256' ] |
 | options.salt | Additional data validated by the token but NOT included in the token body. (It will be deprecated) |
 | options.startTime | What is the start time? (Use string 'now' for the current time) |
-| options.endTime | When does this token expire? 'end_time' overrides 'window_seconds' |
+| options.endTime | When does this token expire? endTime overrides windowSeconds |
 | options.windowSeconds | How long is this token valid for? |
 | options.fieldDelimiter | Character used to delimit token body fields. [ Default: ~ ] |
 | options.aclDelimiter | Character used to delimit acl. [ Default: ! ] |
-| options.escapeEarly | Causes strings to be 'url' encoded before being used. |
+| options.escapeEarly | Causes strings to be url encoded before being used. |
 | options.verbose | Print all parameters. |
 
 
 #### EdgeAuth's Method
 
 ```Javascript
-generateURLToken(path) {}
+generateURLToken(url) {}
 generateACLToken(acl) {}
 
 // both return the authorization token string.
@@ -169,7 +169,7 @@ generateACLToken(acl) {}
 | Parameter | Description |
 |-----------|-------------|
 | url | Single URL path (String) |
-| acl | Access control list using the wildcard(\*, ?) and can be delimited by '!' (String or Array) |
+| acl | Access Control List can use the wildcard(\*, ?). It can be String (single path) or Array (multi paths) |
 
 
 ## Others

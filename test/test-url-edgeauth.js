@@ -138,192 +138,192 @@ function headerAssertEqual(args, callback) {
 // ********
 describe(`URL | Escape Token (O) | Ignore QueryString (O)`, function() {
 	it('/q_escape_ignore', function(done) {
-			var args = {
-				path: '/q_escape_ignore',
-				authpath: '/q_escape_ignore',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q_escape_ignore',
+			authpath: '/q_escape_ignore',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c_escape_ignore', function(done) {
-			var args = {
-				path: '/c_escape_ignore',
-				authpath: '/c_escape_ignore',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/c_escape_ignore',
+			authpath: '/c_escape_ignore',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h_escape_ignore', function(done) {
-			var args = {
-				path: '/h_escape_ignore',
-				authpath: '/h_escape_ignore',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_escape_ignore',
+			authpath: '/h_escape_ignore',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 
 	it('/q_escape_ignore?hello=world&안녕=세상', function(done) {
-			var args = {
-				path: '/q_escape_ignore?hello=world' + encodeURIComponent("&안녕=세상"),
-				authpath: '/q_escape_ignore',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q_escape_ignore?hello=world' + encodeURIComponent("&안녕=세상"),
+			authpath: '/q_escape_ignore',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c_escape_ignore?hello=world&안녕=세상', function(done) {
-			var args = {
-				path: "/c_escape_ignore?hello=world&안녕=세상",
-				authpath: '/c_escape_ignore',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: "/c_escape_ignore?hello=world&안녕=세상",
+			authpath: '/c_escape_ignore',
+			escapeEarly: true, 
+			isUrl: true
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h_escape_ignore?hello=world', function(done) {
-			var args = {
-				path: '/h_escape_ignore?hello=world',
-				authpath: '/h_escape_ignore',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_escape_ignore?hello=world',
+			authpath: '/h_escape_ignore',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/q_escape_ignore transitionKey', function(done) {
-			var args = {
-				path: '/q_escape_ignore',
-				authpath: '/q_escape_ignore',
-				transition: transitionKey,
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q_escape_ignore',
+			authpath: '/q_escape_ignore',
+			transition: transitionKey,
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c_escape_ignore transitionKey', function(done) {
-			var args = {
-				path: '/c_escape_ignore',
-				authpath: '/c_escape_ignore',
-				transition: transitionKey,
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/c_escape_ignore',
+			authpath: '/c_escape_ignore',
+			transition: transitionKey,
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h_escape_ignore transitionKey', function(done) {
-			var args = {
-				path: '/h_escape_ignore',
-				authpath: '/h_escape_ignore',
-				transition: transitionKey,
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_escape_ignore',
+			authpath: '/h_escape_ignore',
+			transition: transitionKey,
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 
 	it('/q_escape_ignore payload', function(done) {
-			var args = {
-				path: '/q_escape_ignore',
-				authpath: '/q_escape_ignore',
-				payload: 'SOME_PAYLOAD_DATA',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q_escape_ignore',
+			authpath: '/q_escape_ignore',
+			payload: 'SOME_PAYLOAD_DATA',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c_escape_ignore payload', function(done) {
-			var args = {
-				path: '/c_escape_ignore',
-				authpath: '/c_escape_ignore',
-				payload: 'SOME_PAYLOAD_DATA',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/c_escape_ignore',
+			authpath: '/c_escape_ignore',
+			payload: 'SOME_PAYLOAD_DATA',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h_escape_ignore payload', function(done) {
-			var args = {
-				path: '/h_escape_ignore',
-				authpath: '/h_escape_ignore',
-				payload: 'SOME_PAYLOAD_DATA',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_escape_ignore',
+			authpath: '/h_escape_ignore',
+			payload: 'SOME_PAYLOAD_DATA',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/q_escape_ignore sessionId', function(done) {
-			var args = {
-				path: '/q_escape_ignore',
-				authpath: '/q_escape_ignore',
-				sessionId: 'SOME_SESSION_ID_DATA',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q_escape_ignore',
+			authpath: '/q_escape_ignore',
+			sessionId: 'SOME_SESSION_ID_DATA',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c_escape_ignore sessionId', function(done) {
-			var args = {
-				path: '/c_escape_ignore',
-				authpath: '/c_escape_ignore',
-				sessionId: 'SOME_SESSION_ID_DATA',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/c_escape_ignore',
+			authpath: '/c_escape_ignore',
+			sessionId: 'SOME_SESSION_ID_DATA',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h_escape_ignore sessionId', function(done) {
-			var args = {
-				path: '/h_escape_ignore',
-				authpath: '/h_escape_ignore',
-				sessionId: 'SOME_SESSION_ID_DATA',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_escape_ignore',
+			authpath: '/h_escape_ignore',
+			sessionId: 'SOME_SESSION_ID_DATA',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
@@ -332,37 +332,37 @@ describe(`URL | Escape Token (O) | Ignore QueryString (O)`, function() {
 
 describe(`URL | Escape Token (X) | Ignore QueryString (O)`, function() {
 	it('/q_ignore', function(done) {
-			var args = {
-				path: '/q_ignore',
-				authpath: '/q_ignore',
-				escapeEarly: false, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q_ignore',
+			authpath: '/q_ignore',
+			escapeEarly: false, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c_ignore', function(done) {
-			var args = {
-				path: '/c_ignore',
-				authpath: '/c_ignore',
-				escapeEarly: false, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/c_ignore',
+			authpath: '/c_ignore',
+			escapeEarly: false, 
+			isUrl: true 
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h_ignore?안녕=세상', function(done) {
-			var args = {
-				path: '/h_ignore?안녕=세상',
-				authpath: '/h_ignore',
-				escapeEarly: false, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_ignore?안녕=세상',
+			authpath: '/h_ignore',
+			escapeEarly: false, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
@@ -371,49 +371,49 @@ describe(`URL | Escape Token (X) | Ignore QueryString (O)`, function() {
 
 describe(`URL | Escape Token (O) | Ignore QueryString (X)`, function() {
 	it('/q_escape?' + encodeURIComponent("안녕=세상"), function(done) {
-			var args = {
-				path: '/q_escape?' + encodeURIComponent("안녕=세상"),
-				authpath: '/q_escape?' + encodeURIComponent("안녕=세상"),
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q_escape?' + encodeURIComponent("안녕=세상"),
+			authpath: '/q_escape?' + encodeURIComponent("안녕=세상"),
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c_escape', function(done) {
-			var args = {
-				path: '/c_escape',
-				authpath: '/c_escape',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/c_escape',
+			authpath: '/c_escape',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h_escape', function(done) {
-			var args = {
-				path: '/h_escape',
-				authpath: '/h_escape',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_escape',
+			authpath: '/h_escape',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/h_escape?안녕=세상', function(done) {
-			var args = {
-				path: '/h_escape?안녕=세상',
-				authpath: '/h_escape?안녕=세상',
-				escapeEarly: true, 
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h_escape?안녕=세상',
+			authpath: '/h_escape?안녕=세상',
+			escapeEarly: true, 
+			isUrl: true 
+		}
+		headerAssertEqual(args, (statusCode) => {
 			expect(403).to.equal(statusCode)
 			return done()
 	  	})
@@ -423,37 +423,38 @@ describe(`URL | Escape Token (O) | Ignore QueryString (X)`, function() {
 
 describe(`URL | Escape Token (X) | Ignore QueryString (X)`, function() {
 	it('/q?' + encodeURIComponent("안녕=세상"), function(done) {
-			var args = {
-				path: '/q?' + encodeURIComponent("안녕=세상"),
-				authpath: '/q?' + encodeURIComponent("안녕=세상"),
-				escapeEarly: false, 
-				isUrl: true 
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/q?' + encodeURIComponent("안녕=세상"),
+			authpath: '/q?' + encodeURIComponent("안녕=세상"),
+			escapeEarly: false, 
+			isUrl: true 
+		}
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 	it('/c', function(done) {
-			var args = {
-				path: '/c',
-				authpath: '/c',
-				escapeEarly: false, 
-				isUrl: true 
-			}
-			cookieAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/c',
+			authpath: '/c',
+			escapeEarly: false, 
+			isUrl: true 
+		}
+		cookieAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 		})
 	})
 	it('/h', function(done) {
-			var args = {
-				path: '/h',
-				authpath: '/h',
-				escapeEarly: false,
-				isUrl: true 
-			}
-			headerAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/h',
+			authpath: '/h',
+			escapeEarly: false,
+			isUrl: true 
+		}
+
+		headerAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
@@ -462,16 +463,34 @@ describe(`URL | Escape Token (X) | Ignore QueryString (X)`, function() {
 
 describe(`URL | SALT | Escape Token (O) | Ignore QueryString (O)`, function() {
 	it('/salt', function(done) {
-			var args = {
-				path: '/salt',
-				authpath: '/salt',
-				escapeEarly: true, 
-				isUrl: true,
-				salt: salt
-			}
-			queryAssertEqual(args, (statusCode) => {
+		var args = {
+			path: '/salt',
+			authpath: '/salt',
+			escapeEarly: true, 
+			isUrl: true,
+			salt: salt
+		}
+
+		queryAssertEqual(args, (statusCode) => {
 			expect(404).to.equal(statusCode)
 			return done()
 	  	})
 	})
 })
+
+describe(`Time Test`, function() {
+	it('Time Test', function(done) {
+		var ea = new EdgeAuth({
+			key: encryptionKey,
+			windowSeconds: DEFAULT_WINDOW_SECOND,
+		})
+		ea.generateURLToken("/")
+		expect(undefined).to.equal(ea.start_time)
+		expect(undefined).to.equal(ea.end_time)
+
+		return done()
+	})
+})
+
+
+
