@@ -1,16 +1,16 @@
-# Akamai-EdgeAuth: Akamai Edge Authorization Token for Node
+# EdgeAuth-Token-Node: Akamai Edge Authorization Token for Node
 
 [![npm package](https://badge.fury.io/js/akamai-edgeauth.svg)](https://badge.fury.io/js/akamai-edgeauth)
-[![Build Status](https://travis-ci.org/AstinCHOI/Akamai-EdgeAuth-Node.svg?branch=master)](https://travis-ci.org/AstinCHOI/Akamai-EdgeAuth-Node)
-[![License](http://img.shields.io/:license-apache-blue.svg)](https://github.com/AstinCHOI/Akamai-EdgeAuth-Node/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/akamai/EdgeAuth-Token-Node.svg?branch=master)](https://travis-ci.org/akamai/EdgeAuth-Token-Node)
+[![License](http://img.shields.io/:license-apache-blue.svg)](https://github.com/akamai/EdgeAuth-Token-Node/blob/master/LICENSE)
 
 [![npm package](https://nodei.co/npm/akamai-edgeauth.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/akamai-edgeauth/)
 
-Akamai-EdgeAuth is Akamai Edge Authorization Token in the HTTP Cookie, Query String and Header for a client.
+EdgeAuth-Token-Node is Akamai Edge Authorization Token in the HTTP Cookie, Query String and Header for a client.
 You can configure it in the Property Manager at https://control.akamai.com.
 It's the behaviors which is Auth Token 2.0 Verification and Segmented Media Protection.
 
-Akamai-EdgeAuth supports for Node.js 4.0+
+EdgeAuth-Token-Node supports for Node.js 4.0+
 
 <div style="text-align:center"><img src=https://github.com/AstinCHOI/akamai-asset/blob/master/edgeauth/edgeauth.png?raw=true/></div>
 
@@ -181,7 +181,7 @@ If you use the **Segmented Media Protection** behavior in AMD(Adaptive Media Del
 
 ## Command
 
-You can use the command with [cms-edgeauth.js](https://github.com/AstinCHOI/Akamai-EdgeAuth-Node/blob/master/cms-edgeauth.js) in your terminal with [commander](https://www.npmjs.com/package/commander) to generate the token.
+You can use the command with [cms-edgeauth.js](https://github.com/akamai/EdgeAuth-Token-Node/blob/master/cms-edgeauth.js) in your terminal with [commander](https://www.npmjs.com/package/commander) to generate the token.
 
 ```Shell
 $ npm install commander --save
