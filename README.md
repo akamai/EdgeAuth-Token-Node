@@ -97,7 +97,7 @@ var ea = new EdgeAuth({
     windowSeconds: DURATION,
     escapeEarly: false
 })
-var token = ea.generateURLToken("/akamai/edgeauth/*")
+var token = ea.generateACLToken("/akamai/edgeauth/*")
 var options = {
     hostname: EA_HOSTNAME,
     path: "/akamai/edgeauth/something",
@@ -115,7 +115,7 @@ var ea = new EdgeAuth({
     escapeEarly: false
 })
 var acl = ["/akamai/edgeauth/??", "/akamai/edgeauth/list/*"]
-var token = ea.generateURLToken(acl)
+var token = ea.generateACLToken(acl)
 var options = {
     hostname: EA_HOSTNAME,
     path: "/akamai/edgeauth/22",
