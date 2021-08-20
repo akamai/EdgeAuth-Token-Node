@@ -3,7 +3,7 @@ const assert = require('assert')
 const http = require('http')
 const fs = require('fs')
 const util = require('util')
-const EdgeAuth = require('../lib/edgeauth')
+const { EdgeAuth } = require('../lib/edgeauth')
 const expect = require('chai').expect
 
 const DEFAULT_WINDOW_SECOND = 10
