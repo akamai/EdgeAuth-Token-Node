@@ -2,7 +2,7 @@
   "name": "akamai-edgeauth",
   "version": "0.2.0",
   "description": "Akamai Edge Authorization Token for Property Manager Behavior",
-  "main": "./lib/edgeauth.js",
+  "main": "./lib/edgeAuth.js",
   "scripts": {
     "test": "mocha --reporter spec --no-timeouts --ui bdd ./test/test-*"
   },
