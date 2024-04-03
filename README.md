@@ -12,9 +12,6 @@ It's the behaviors which is Auth Token 2.0 Verification and Segmented Media Prot
 
 EdgeAuth-Token-Node supports for Node.js 4.0+
 
-<div style="text-align:center"><img src=https://github.com/AstinCHOI/akamai-asset/blob/master/edgeauth/edgeauth.png?raw=true/></div>
-
-
 ## Installation
 
 To install Akamai Edge Authorization Token with npm:  
@@ -175,9 +172,6 @@ generateACLToken(acl) {}
 ## Others
 
 If you use the **Segmented Media Protection** behavior in AMD(Adaptive Media Delivery) Product, **tokenName(options.tokenName)** should be '**hdnts**'.
-
-<div style="text-align:center"><img src=https://github.com/AstinCHOI/akamai-asset/blob/master/edgeauth/segmented_media_protection.png?raw=true/></div>
-
 
 ## Command
 
