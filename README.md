@@ -61,7 +61,9 @@ var token = ea.generateURLToken("/akamai/edgeauth")
 var options = {
     hostname: EA_HOSTNAME,
     path: '/akamai/edgeauth',
-    'Cookie': `${ea.options.tokenName}=${token}`
+    headers: {
+      Cookie: `${ea.options.tokenName}=${token}`
+    }
 }
 makeRequest(options, function(res) {
     console.log(res.statusCode) // If pass, it won't response 403 code.
@@ -116,7 +118,9 @@ var token = ea.generateURLToken(acl)
 var options = {
     hostname: EA_HOSTNAME,
     path: "/akamai/edgeauth/22",
-    Cookie: `${ea.options.tokenName}: ${token}`
+    headers: {
+      Cookie: `${ea.options.tokenName}=${token}`
+    }
 }
 makeRequest(options, function(res) {
     console.log(res.statusCode)
