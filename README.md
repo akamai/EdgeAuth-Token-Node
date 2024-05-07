@@ -24,7 +24,7 @@ $ npm install akamai-edgeauth --save
 ## Example
 
 ```Javascript
-const EdgeAuth = require('akamai-edgeauth')
+const { EdgeAuth } = require('akamai-edgeauth')
 const http = require('http') // Module for the test
 
 
