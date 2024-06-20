@@ -209,31 +209,31 @@ program
 	.parse(process.argv);
 
 var ea = new EdgeAuth({
-	tokenType: program.token_type,
-	tokenName: program.token_name,
-	key: program.key,
-	algorithm: program.algo,
-	salt: program.salt,
-	startTime: program.start_time,
-	endTime: program.end_time,
-	windowSeconds: program.window,
-	fieldDelimiter: program.field_delimiter,
-	aclDelimiter: program.acl_delimiter,
-	escapeEarly: program.escape_early,
-	verbose: program.verbose,
-	url: program.url,
-	acl: program.acl,
-	ip: program.ip,
-	payload: program.payload,
-	sessionId: program.session_id
+	tokenType: program.opts().token_type,
+	tokenName: program.opts().token_name,
+	key: program.opts().key,
+	algorithm: program.opts().algo,
+	salt: program.opts().salt,
+	startTime: program.opts().start_time,
+	endTime: program.opts().end_time,
+	windowSeconds: program.opts().window,
+	fieldDelimiter: program.opts().field_delimiter,
+	aclDelimiter: program.opts().acl_delimiter,
+	escapeEarly: program.opts().escape_early,
+	verbose: program.opts().verbose,
+	url: program.opts().url,
+	acl: program.opts().acl,
+	ip: program.opts().ip,
+	payload: program.opts().payload,
+	sessionId: program.opts().session_id
 })
 
 
 var token
 if (program.acl) {
-	token = ea.generateACLToken(program.acl)
+	token = ea.generateACLToken(program.opts().acl)
 } else { // program.url
-	token = ea.generateURLToken(program.url)
+	token = ea.generateURLToken(program.opts().url)
 }
 
 console.log("### Cookie or Query String ###")
